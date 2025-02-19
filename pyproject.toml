@@ -7,9 +7,16 @@ license = "AGPL-3.0"
 readme = "README.md"
 packages = [{include = "src"}]  # Se la tua cartella con il codice è "src"
 
+[tool.poetry.scripts]
+main = "src.main:main"
+
+
 [tool.poetry.dependencies]
 python = ">=3.9,<=3.13.2"
 pandas = ">=2.2.3,<3.0.0"
+pathlib = "^1.0.1"
+openpyxl = "^3.1.5"
+
 
 [build-system]
 requires = ["poetry-core>=2.0.0"]
