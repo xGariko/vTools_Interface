@@ -1,0 +1,17 @@
+[project]
+name = "vcontacts"
+version = "0.1.0"
+description = "Simple tool to convert excel data sheet into VCF card to save lot of contacts rapidly."
+authors = [
+    {name = "DESKTOP-TGCVMDQ\\Gabriele Iovino",email = "gabrieleiovino839@gmail.com"}
+]
+license = {text = "GNU AGPLv3"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
