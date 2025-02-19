@@ -1,17 +1,16 @@
-[project]
+[tool.poetry]
 name = "vcontacts"
 version = "0.1.0"
-description = "Simple tool to convert excel data sheet into VCF card to save lot of contacts rapidly."
-authors = [
-    {name = "DESKTOP-TGCVMDQ\\Gabriele Iovino",email = "gabrieleiovino839@gmail.com"}
-]
-license = {text = "GNU AGPLv3"}
+description = "Simple tool to convert Excel data sheet into VCF card to save a lot of contacts rapidly."
+authors = ["Gabriele Iovino <gabrieleiovino839@gmail.com>"]
+license = "AGPL-3.0"
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-]
+packages = [{include = "src"}]  # Se la tua cartella con il codice è "src"
 
+[tool.poetry.dependencies]
+python = ">=3.9,<=3.13.2"
+pandas = ">=2.2.3,<3.0.0"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
