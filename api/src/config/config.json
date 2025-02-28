@@ -1,0 +1,8 @@
+[
+  {
+    "title": "Genera contatti",
+    "description": "Genera file .vcf per registrare velocemente un gran numero di contatti a partire da un foglio Excel.",
+    "icon": "bi bi-person-lines-fill",
+    "route": "generateContacts"
+  }
+]
