@@ -1,5 +1,6 @@
 import pandas as pd
 import pathlib
+import fastapi
 
 # Loads an Excel file into a DataFrame if the file exists.
 def load_worksheet_file(inputPath: str) -> pd.DataFrame:
