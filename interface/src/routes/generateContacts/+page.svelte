@@ -1,12 +1,18 @@
 <script lang="ts">
 	import ToolTitle from "$lib/components/tool-title.svelte"
 	import UploadFile from "$lib/components/upload-file.svelte"
+	import InputSelect from "\$lib/components/input-select.svelte";
+	
 	import { Config } from '$lib/config';
 
 	let isLoading = $state(false);
 	let uploadedFileName = $state(null);
 	let isFileUploaded = $state(false);
 	let nameFormat = $state("merged");  // Inizialmente settato su "merged"
+
+	let nameColumn = $state("");
+	let surnameColumn = $state("");
+	let unifiedNameColumn = $state("");
 
 	async function uploadFile(uploadedFile: File) {
 		const formData = new FormData();
@@ -46,6 +52,10 @@
 		nameFormat = target.value;
 		console.log(nameFormat);
 	}
+
+	function checklink(){
+		console.log(nameColumn);
+	}
 </script>
 
 <ToolTitle
@@ -54,7 +64,7 @@
 ></ToolTitle>
 
 <div class="row d-flex justify-content-center">
-	<div class="col-9 bg-light">
+	<div class="col-9 bg-light p-5">
 		{#if !isLoading}
 			<UploadFile
 				acceptedExtensions={["xlsx", "csv"]}
@@ -68,7 +78,7 @@
 		{/if}
 
 		{#if !isFileUploaded}
-			<div class="bg-white rounded p-5">
+			<div class="bg-white rounded p-5 m-2">
 				<div class="row text-center fs-5">
 					<div class="col-12">Dati caricati: <span class="text-primary fw-bold">{uploadedFileName}</span></div>
 				</div>
@@ -80,14 +90,45 @@
 
 					<!-- I radio buttons ora hanno lo stesso 'name' -->
 					<div>
-						<input type="radio" name="nameType" value="merged" checked={nameFormat === 'separated'} onchange={getNameFormat}>
+						<input type="radio" name="nameType" value="merged" checked onchange={getNameFormat}>
 						<label for="nameType">In una colonna</label>
 					</div>
 					<div>
-						<input type="radio" name="nameType" value="separated" checked={nameFormat === 'merged'} onchange={getNameFormat}>
+						<input type="radio" name="nameType" value="separated" onchange={getNameFormat}>
 						<label for="nameType">In colonne separate</label>
 					</div>
 				</div>
+
+				{#if nameFormat === 'separated'}
+					<div class="row">
+						<div class="col-6">
+							<InputSelect
+								name="nameColumn"
+								options={["ciao","ciao2"]}
+								label="Nome"
+								onchange={checklink}
+							>
+							</InputSelect>
+						</div>
+						<div class="col-6">
+							<InputSelect
+								name="surnameColumn"
+								options={[]}
+								label="Cognome"
+								bind:value={surnameColumn}
+							>
+							</InputSelect>
+						</div>
+					</div>
+				{:else}
+					<InputSelect
+						name="unifiedNameColumn"
+						options={[]}
+						label="Nome e cognome"
+						linkedVar={unifiedNameColumn}
+					>
+					</InputSelect>
+				{/if}
 			</div>
 		{/if}
 	</div>
