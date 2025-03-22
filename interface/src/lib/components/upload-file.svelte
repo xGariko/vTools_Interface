@@ -67,9 +67,7 @@
 
 	function confirmUpload() {
 		if(selectedFile && !isUploading && !fileTooLarge) {
-			onConfirm({
-				file: selectedFile,
-			});
+			onConfirm(selectedFile);
 			deleteSelectedFile()
 		}
 	}
