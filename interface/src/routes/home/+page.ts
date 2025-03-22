@@ -16,8 +16,11 @@ export const load: PageLoad = async({ fetch }) =>{
 		}
 	}
 
-	const toolCards = await toolConfigResponse.json();
-	return {
-		toolCards: toolCards
+	if(toolConfigResponse.status === 200){
+		const toolCards = await toolConfigResponse.json();
+		return {
+			toolCards: toolCards
+		}
 	}
+
 }

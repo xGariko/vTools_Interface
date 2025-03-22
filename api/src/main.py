@@ -1,8 +1,10 @@
+from io import BytesIO
 from fastapi import FastAPI, File, UploadFile, HTTPException, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import json
 import os
+import xlsxScraper
 
 app = FastAPI()
 
@@ -40,3 +42,11 @@ def get_tool_cards():
         return "ToolCards config not found"
     except Exception as E:
         return E
+
+
+@app.post("/api/generateContacts/uploadFile")
+async def generate_contacts_file_upload(file: UploadFile = File(...)):
+    file_contents = await file.read()
+    file_bytes = BytesIO(file_contents)
+    data_frame = pd.read_excel(file_bytes)
+    return xlsxScraper.processFile(data_frame)

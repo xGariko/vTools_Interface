@@ -1,5 +1,6 @@
 export type ConfigType = {
-	API_ENDPOINT: string
+	API_ENDPOINT: string,
+	MAX_FILE_SIZE: number
 }
 
 export type ToolCardDTO = {

@@ -11,19 +11,31 @@
 		await goto(route);
 	}
 
+	function handleKeyDown(event) {
+		// Se l’utente preme Invio (Enter) o Spazio, richiamiamo la stessa funzione di click
+		if (event.key === 'Enter' || event.key === ' ') {
+			// Impedisce il comportamento di default su Barra Spaziatrice
+			event.preventDefault();
+			navigate();
+		}
+	}
+
 </script>
 
-<div class="card m-5">
-	<div class="card-header text-center">{title}</div>
+<div
+	class="card m-4 mb-0 mt-5"
+	onclick={navigate}
+	role="link"
+	onkeydown={handleKeyDown}
+	tabindex="0"
+>
+	<div class="card-header text-center text-primary fw-bold fs-5">{title}</div>
 	{#if icon}
 		<div class="card-img d-flex align-items-center justify-content-center text-dark">
 			<i class="{icon}"></i>
 		</div>
 	{/if}
-	<div class="card-body">{description}</div>
-	<div class="card-footer">
-		<button class="btn btn-primary w-100" onclick={navigate}>Apri</button>
-	</div>
+	<div class="card-body pe-5 ps-5 bg-body-tertiary rounded border-top">{description}</div>
 </div>
 
 <style>
@@ -37,5 +49,16 @@
 	.card-img i{
 			height: 100% !important;
 			font-size: 500%;
+	}
+
+	.card{
+			transition: 0.2s all;
+			cursor: pointer;
+	}
+
+	.card:hover{
+			transition: 0.2s transform ease-in-out;
+			transform: translateY(-2%);
+			outline: 2px solid var(--bs-primary);
 	}
 </style>

@@ -1,6 +1,9 @@
 import pandas as pd
 import pathlib
 import fastapi
+from pandas.core.interchange.dataframe_protocol import DataFrame
+from starlette.datastructures import UploadFile
+
 
 # Loads an Excel file into a DataFrame if the file exists.
 def load_worksheet_file(inputPath: str) -> pd.DataFrame:
@@ -45,3 +48,9 @@ def get_column_data(columnName: str, sheet: pd.DataFrame) -> list:
 # Adds a suffix to each item in a list.
 def add_suffix(namesList: list, suffix: str) -> list:
     return [f"{name} {suffix}" for name in namesList]
+
+def add_prefix(namesList: list, prefix: str) -> list:
+    return [f"{prefix} {name}" for name in namesList]
+
+def processFile(data_frame: pd.DataFrame):
+    

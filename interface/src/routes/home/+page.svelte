@@ -8,9 +8,12 @@
 
 </script>
 
-<div class="fs-2 m-2 row w-100 d-flex align-content-center justify-content-center fw-bold fst-italic">Seleziona tool</div>
+<div class="fs-2 ms-5 mt-5 w-100 d-flex align-items-center">
+	<i class="bi bi-collection text-primary fs-1 me-3"></i>
+	<span>Seleziona strumento</span>
+</div>
 
-<div class="row">
+<div class="row overflow-scroll pe-5 ps-5" id="toolCardsList">
 	{#each toolCards as toolCard}
 		<div class="col-3">
 			<ToolCard
@@ -25,3 +28,8 @@
 
 </div>
 
+<style>
+    #toolCardsList{
+				height: 80%;
+		}
+</style>
