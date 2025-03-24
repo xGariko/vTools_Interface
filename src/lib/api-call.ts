@@ -5,7 +5,8 @@ export class ApiCall {
 		return this.wrappedFetch(fetch, endpoint, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin'
 			},
 			body: JSON.stringify(body)
 		});
@@ -16,7 +17,8 @@ export class ApiCall {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
-				'Accept': 'application/json'
+				'Accept': 'application/json',
+				'Access-Control-Allow-Origin'
 			}
 		});
 	}
