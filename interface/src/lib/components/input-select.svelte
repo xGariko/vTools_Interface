@@ -1,9 +1,20 @@
 <script lang="ts">
-	let { value = $bindable(), options = [], name = "", label = null } : { value : string, options : string[], name : string, label : string | null} = $props();
+	interface InputSelectProps {
+		value?: string,
+		options?: string[],
+		name?: string,
+		label?: string | null
+		onChange (): void
+	}
 
+	let {
+		value = $bindable(),
+		options = [],
+		name = "",
+		label = null,
+		onChange
+	} : InputSelectProps = $props();
 
-	let label : string = data.label;
-	let onChange = data.onchange;
 
 	function callbackChange(){
 		onChange()

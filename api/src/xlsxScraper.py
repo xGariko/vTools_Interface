@@ -1,8 +1,6 @@
 import pandas as pd
 import pathlib
-import fastapi
-from pandas.core.interchange.dataframe_protocol import DataFrame
-from starlette.datastructures import UploadFile
+import json
 
 
 # Loads an Excel file into a DataFrame if the file exists.
@@ -53,4 +51,18 @@ def add_prefix(namesList: list, prefix: str) -> list:
     return [f"{prefix} {name}" for name in namesList]
 
 def processFile(data_frame: pd.DataFrame):
-    return
+    columnsNames = get_sheet_headers(data_frame)
+    columnsData = {}
+    for col in columnsNames:
+        col_data = get_column_data(col, data_frame)
+        if isinstance(col_data, pd.Series):
+            col_data = col_data.fillna("").tolist()
+        else:
+            col_data = ["" if pd.isna(x) else x for x in col_data]
+        columnsData[col] = col_data
+
+    assembledData = {
+        "headers": columnsNames,
+        "columnsData": columnsData
+    }
+    return assembledData

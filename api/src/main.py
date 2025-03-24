@@ -52,5 +52,5 @@ async def generate_contacts_file_upload(file: UploadFile = File(...)):
     file_contents = await file.read()
     file_bytes = BytesIO(file_contents)
     data_frame = pd.read_excel(file_bytes)
-    xlsxScraper.processFile(data_frame)
-    return JSONResponse(content={"filename":file.filename})
+    data = xlsxScraper.processFile(data_frame)
+    return JSONResponse(content={"fileName":file.filename, "data":data})
