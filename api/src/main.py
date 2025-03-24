@@ -1,11 +1,12 @@
+import io
 from io import BytesIO
-from fastapi import FastAPI, File, UploadFile, HTTPException, Response, status
+from fastapi import FastAPI, File, UploadFile, HTTPException, Response, status, Form
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import json
 import os
 
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, StreamingResponse
 
 from . import xlsxScraper
 
@@ -46,6 +47,12 @@ def get_tool_cards():
     except Exception as E:
         return E
 
+@app.post("/api/generateContacts/generate")
+async def generate_contacts_generate(contactsData: str = Form(...)):
+    filename, file_bytes = xlsxScraper.generateContacts(contactsData)
+    media_type = "application/zip" if filename.endswith(".zip") else "text/vcard"
+    headers = {"Content-Disposition": f"attachment; filename={filename}"}
+    return StreamingResponse(io.BytesIO(file_bytes), media_type=media_type, headers=headers)
 
 @app.post("/api/generateContacts/uploadFile")
 async def generate_contacts_file_upload(file: UploadFile = File(...)):
