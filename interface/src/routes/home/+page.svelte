@@ -4,8 +4,7 @@
 	import type { ToolCardDTO } from '$lib/models/dto';
 
 	export let data: PageData;
-	let toolCards: ToolCardDTO[] = data.toolCards;
-
+	let toolCards: ToolCardDTO[] = JSON.parse(data.toolCards);
 </script>
 
 <div class="fs-2 ms-5 mt-5 w-100 d-flex align-items-center">

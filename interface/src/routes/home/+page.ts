@@ -4,7 +4,7 @@ import { ApiCall } from '$lib/api-call';
 
 export const load: PageLoad = async({ fetch }) =>{
 	const toolConfigResponseEndpoint : string = `${Config.API_ENDPOINT}/api/config/tool_cards`;
-
+	console.log(toolConfigResponseEndpoint);
 	const apiCall = new ApiCall
 	const toolConfigResponse = await apiCall.get(fetch, toolConfigResponseEndpoint);
 	if (!toolConfigResponse || (toolConfigResponse.status !== 404 && toolConfigResponse.status !== 200)){

@@ -1,6 +1,6 @@
 import type { ConfigType } from '$lib/models/dto';
 
-const API_ENDPOINT : string = "http://127.0.0.1:8000";
+const API_ENDPOINT : string = "https://vtools-a9g7.onrender.com";
 const MAX_FILE_SIZE = 25 * 1024 * 1024;
 
 export const Config : ConfigType = {
