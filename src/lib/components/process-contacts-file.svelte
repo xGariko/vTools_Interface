@@ -88,7 +88,7 @@
 	}
 </script>
 
-<div class="bg-white rounded p-5 m-2">
+<div class="bg-white rounded p-lg-5 p-3 m-lg-2 m-0 mt-3">
 	<div class="row text-center fs-4">
 		<div class="col-12 fw-bold">Dati caricati: <span class="text-primary">{uploadedFileName}</span></div>
 	</div>
@@ -110,7 +110,7 @@
 
 		{#if nameFormat === 'separated'}
 			<div class="row pt-3 pb-3">
-				<div class="col-6">
+				<div class="col-lg-6 col-12">
 					<InputSelect
 						name="nameColumn"
 						options={columnsNames}
@@ -120,7 +120,7 @@
 					>
 					</InputSelect>
 				</div>
-				<div class="col-6">
+				<div class="col-lg-6 col-12">
 					<InputSelect
 						name="surnameColumn"
 						options={columnsNames}
@@ -146,7 +146,7 @@
 	</div>
 	<hr>
 	<div class="mt-5 mb-5 row">
-		<div class="col-6">
+		<div class="col-lg-6 col-12">
 			<InputSelect
 				name="mobileNumber"
 				options={columnsNames}
@@ -157,13 +157,13 @@
 			</InputSelect>
 		</div>
 
-		<div class="col-6 row">
+		<div class="col-lg-6 col-12 mt-3 mt-lg-0 row">
 				<div>Aggiungi:</div>
 				<div class="col-12 row">
-					<div class="col-6">
+					<div class="col-lg-6 col-12">
 						<input type="text" class="v-input w-100 text-center" bind:value={prefix} placeholder="Prefisso">
 					</div>
-					<div class="col-6">
+					<div class="col-lg-6 col-12">
 						<input type="text" class="v-input w-100 text-center" bind:value={suffix} placeholder="Suffisso">
 					</div>
 				</div>
@@ -171,7 +171,7 @@
 	</div>
 	<hr>
 	<div class="row p-2 justify-content-between">
-		<div class="col-2">
+		<div class="col-lg-2 col-12">
 			<label for="nfile">Dividi in:</label>
 			<input type="number"
 						 id="nfile"
@@ -184,7 +184,7 @@
 			>
 		</div>
 
-		<div class="col-4">
+		<div class="col-lg-4 col-12 mt-3 mt-lg-0">
 			<label for="nfile">Nome vCard:</label>
 			<input type="text" class="v-input w-100 text-center" bind:value={vCardName} placeholder="Nome vCard">
 		</div>

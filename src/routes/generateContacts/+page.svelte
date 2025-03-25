@@ -101,7 +101,7 @@
 	</div>
 {:else}
 	<div class="row d-flex justify-content-center">
-		<div class="col-9 bg-light p-5">
+		<div class="col-9 bg-light p-lg-5 mt-5 mt-lg-0">
 			{#if !isLoading}
 				<UploadFile
 					acceptedExtensions={["xlsx", "csv"]}

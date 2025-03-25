@@ -14,7 +14,7 @@
 
 <div class="row overflow-scroll pe-5 ps-5" id="toolCardsList">
 	{#each toolCards as toolCard}
-		<div class="col-3">
+		<div class="col-12 col-lg-3">
 			<ToolCard
 				title="{toolCard.title}"
 				description="{toolCard.description}"

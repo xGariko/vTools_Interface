@@ -75,30 +75,30 @@
 
 </script>
 
-<div class="row m-2 mb-3 p-4 bg-white border rounded">
+<div class="row m-lg-2 mb-lg-3 p-lg-4 p-1 bg-white border rounded">
 	<div class="col-12">
 		{#if fileTooLarge}
 			<div class="alert alert-danger" role="alert">
-				<img src="/svg/file-upload-error.svg" width="200" height="200" alt="upload-error">
+				<img src="/svg/file-upload-error.svg"  class="d-none d-lg-block" width="200" height="200" alt="upload-error">
 				Il file selezionato è troppo grande. La dimensione massima consentita è di 25 MB.
 			</div>
 			<button class="btn btn-warning w-100" onclick="{deleteSelectedFile}">Riprova</button>
 		{:else if invalidExtension}
 			<div class="alert alert-danger" role="alert">
-				<img src="/svg/file-upload-error.svg" width="200" height="200" alt="upload-error">
+				<img src="/svg/file-upload-error.svg" class="d-none d-lg-block" width="200" height="200" alt="upload-error">
 				Il tipo di file selezionato non è supportato. Le estensioni consentite sono: <span class="fw-bold">{acceptedExtensionsString}</span>.
 			</div>
 			<button class="btn btn-warning w-100" onclick="{deleteSelectedFile}">Riprova</button>
 		{:else if !selectedFile && !isUploading}
 			<div
-				class="mt-2 border-dashed border border-primary rounded p-5 d-flex flex-row align-items-center justify-content-start"
+				class="mt-0 mt-lg-2 border-dashed border border-primary rounded p-2 p-lg-5 d-flex flex-row align-items-center justify-content-start"
 				bind:this="{dropZone}"
 				ondragover="{handleDragOver}"
 				ondrop="{handleDrop}"
 				role="presentation">
 
-				<div class="me-5">
-					<img src="/svg/file-upload.svg" alt="" width="150" height="150" id="upload-file-image">
+				<div class="me-lg-5">
+					<img src="/svg/file-upload.svg" alt="" class="d-none d-lg-block" width="150" height="150" id="upload-file-image">
 				</div>
 				<div>
 					<div class="h4 text-primary">Trascina il file per caricarlo</div>
